@@ -5,8 +5,8 @@ A Remotion template layer derived from Yoru's manual motion curation.
 Every structure here comes from a template family she **kept** in
 [`yoru-motion-research`](https://github.com/yoruuuchan/yoru-motion-research), and every
 timing constant was measured frame-by-frame from the source clips rather than guessed.
-Nothing in `src/` is copied from upstream code — Locomotion is `reference_only` in
-`legal/license-tracker.yml`, and no Locomotion source was ever downloaded.
+Nothing in `src/` is copied from upstream code — Locomotion is `reference_only` in the
+[companion research repo's license tracker](https://github.com/yoruuuchan/yoru-motion-research/blob/main/legal/license-tracker.yml), and no Locomotion source was ever downloaded.
 
 - [`docs/01-archetypes.md`](docs/01-archetypes.md) — the 41 keeps sorted into 7 archetypes, with the count for every family
 - [`docs/02-motion-rules.md`](docs/02-motion-rules.md) — the measured structure and motion rules, with the numbers and how they were taken
@@ -25,7 +25,7 @@ template that only survives its authoring aspect ratio is visible immediately.
 ```bash
 npm run render -- BarChartReveal out/chart.mp4
 node scripts/stills.mjs                 # one still per composition, single bundle
-node scripts/theme-matrix.mjs UiFlow    # one template across all 4 palettes x 4 skins
+node scripts/theme-matrix.mjs UiFlow    # one template across all 5 palettes x 4 skins
 ```
 
 ## Layout
@@ -35,7 +35,7 @@ src/
 ├── core/          tokens, canvas unit, timing constants, type scale, fonts
 ├── primitives/    Stage, Surface, FadeRise, SpringIn, useStagger, Counter,
 │                  DrawLine, Typewriter, GrowBar, Arc, MaskedReveal, Placeholder
-├── themes/        4 palettes x 4 skins
+├── themes/        5 palettes x 4 skins
 ├── presets/       formats and fps
 ├── templates/     18 templates in 6 groups
 └── examples/      demo content for every template
@@ -53,6 +53,7 @@ type family changed. So this system splits that into two independent axes:
 | `neutral-dark` | | `brutalist` | 2px hard edge, offset shadow, mono (13.1%) |
 | `yoru-light` | YORU Content Design System | `glass` | borderless, deep soft shadow (11.5%) |
 | `yoru-dark` | | `flat` | no border, no shadow (cleaned-up `minimal`) |
+| `warm-paper` | anonymized finding from a private real-material stress test | | |
 
 `neo` and `rounded` are not shipped: 2 keeps each out of 61 is noise, not evidence.
 
@@ -85,7 +86,7 @@ const props = {
   fps={30}
   width={1920}
   height={1080}
-/>;
+/>
 ```
 
 Every template exports a matching `xxxDuration(props)`. Adding a row lengthens the
@@ -113,8 +114,7 @@ anywhere in the source), and the Chinese typography settings.
 - Code here is written for this repository. No upstream implementation was copied.
 - Fonts in `public/fonts/` are SIL OFL 1.1 (Inter, JetBrains Mono, Source Han Sans SC),
   taken from the YORU Content Design System. Their licence files ship alongside them.
-- Remotion's own licence grants free use to individuals and organisations up to 3
-  employees. Re-check before any commercial deployment.
+- Remotion is a dependency with its own license and eligibility terms; check the upstream license before commercial deployment.
 
 ## Versions
 
