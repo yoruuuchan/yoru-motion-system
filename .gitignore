@@ -1,0 +1,8 @@
+node_modules/
+out/
+.remotion/
+*.log
+.DS_Store
+
+# Private real-material stress-test media stays local and is never redistributed.
+public/benchmark/

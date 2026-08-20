@@ -1,0 +1,27 @@
+{
+  "name": "yoru-motion-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "YORU Motion System — a Remotion template layer derived from Yoru's manual motion curation.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render",
+    "still": "remotion still",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.441",
+    "@remotion/fonts": "4.0.441",
+    "@remotion/zod-types": "4.0.441",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "remotion": "4.0.441",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}
