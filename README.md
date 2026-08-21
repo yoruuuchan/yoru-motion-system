@@ -12,6 +12,14 @@ Nothing in `src/` is copied from upstream code — Locomotion is `reference_only
 - [`docs/02-motion-rules.md`](docs/02-motion-rules.md) — the measured structure and motion rules, with the numbers and how they were taken
 - [`workflow/making-a-video.md`](workflow/making-a-video.md) — how to get from an idea to a rendered file
 
+## Provenance
+
+This public repository was rebuilt on 2026-08-20 as a **sanitized mirror** of the private
+working repo. Everything engineering-relevant is published: the archetypes, the measured
+motion rules, the templates and the theme system. Not published: internal hand-off notes
+and raw benchmark records involving real client material — their engineering findings are
+kept, anonymized, in `docs/` and in the research repo's
+[`benchmark-a-results.md`](https://github.com/yoruuuchan/yoru-motion-research/blob/main/evaluation/benchmark-a-results.md).
 ## Run it
 
 ```bash
