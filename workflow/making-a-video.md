@@ -88,7 +88,9 @@ npm run render -- BarChartReveal out/chart.mp4   # 出真片
 </Series>
 ```
 
-段与段之间目前是硬切。转场还没做——原素材里没有转场证据，等你另外筛一批再说。
+段与段之间目前是硬切，这个仓库里也不打算做转场。那批已经筛出来了——
+`yoru-motion-research/shots/keep/transition/` 有 13 条 keep（Apache-2.0，代码可以直接抄改；
+5 分的 `shot-transitions` 只有 spec 没有实现）。要接转场去那里拿，别在这里重造。
 
 ## 8. 遇到不对劲的地方
 
