@@ -47,6 +47,43 @@ Committed examples must be synthetic, self-authored, or explicitly redistributab
 Private production material may be used locally for stress testing, but identifying
 names, local paths, screenshots, URLs, metrics, and unpublished copy stay outside Git.
 
+## Making a new piece
+
+Before writing any new composition:
+
+1. Read `QUICK-PICKS.md` at the root of
+   [`yoru-motion-research`](https://github.com/yoruuuchan/yoru-motion-research)
+   and route from there to concrete shots. Clone that repo if you are in a container.
+2. Pick 1–3 shots for the piece, list their paths, and wait for Yoru's
+   confirmation before implementing.
+3. Copy geometry, stagger, easing and timing from the chosen shot implementations
+   unchanged — swap content only. New numbers: ask first, then mark ASSUMPTION
+   (see the one rule above).
+4. Reference assets with `staticFile()` from `public/assets/`. Never inline
+   base64 into source files. If an asset is missing, say so and stop.
+
+A composition that references no shot implementation from the library is a fail.
+Redo it — pan/zoom/crossfade invented from scratch is exactly what this system
+exists to prevent.
+
+## Working from a cloud container (ChatGPT Work / Codex)
+
+Some sandboxes block `os.networkInterfaces()`, which crashes Remotion before
+rendering. Prefix every `remotion` command with:
+
+    export NODE_OPTIONS="--require $PWD/scripts/codex-netif-patch.cjs"
+
+The patch is a no-op in normal environments.
+
+- **Look at what you render.** Before the full render, produce 3–5 key stills
+  and open them with your image tooling: composition, text, overflow, cropping.
+  After the final render, run ffprobe and extract 2–3 frames for another look.
+- **Report every step** with the command and its result. On failure, paste the
+  key lines of the actual error. Never substitute process suggestions for
+  results. If you cannot do something, say so and why.
+- **Deliver** the rendered file via task artifacts / file download. Push source
+  to a fresh branch; leave `main` alone.
+
 ## Before calling a template done
 
 1. `npx tsc --noEmit`
