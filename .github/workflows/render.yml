@@ -7,6 +7,11 @@ on:
         description: Remotion composition ID
         required: true
         default: BentoGrid
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/render.yml
 
 permissions:
   contents: read
@@ -16,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      COMPOSITION: ${{ inputs.composition }}
+      COMPOSITION: ${{ inputs.composition || 'BentoGrid' }}
 
     steps:
       - name: Checkout
@@ -42,7 +47,7 @@ jobs:
       - name: Upload render
         uses: actions/upload-artifact@v4
         with:
-          name: remotion-${{ inputs.composition }}-${{ github.run_id }}
+          name: remotion-${{ env.COMPOSITION }}-${{ github.run_id }}
           path: out/render.mp4
           if-no-files-found: error
           retention-days: 7
