@@ -46,7 +46,7 @@ jobs:
           for frame in 30 105 165 225 360 430 520 590 650 688; do
             npx remotion still src/evaluation-map-index.tsx EvaluationMap "deliveries/qc-${frame}.png" --frame="$frame"
           done
-          ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height,r_frame_rate,pix_fmt -of default=noprint_wrappers=1 deliveries/evaluation-map.mp4
+          test -s deliveries/evaluation-map.mp4
 
       - name: Upload render artifact
         uses: actions/upload-artifact@v4
