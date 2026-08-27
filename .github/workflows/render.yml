@@ -7,6 +7,9 @@ on:
         description: Remotion composition ID
         required: true
         default: BentoGrid
+  push:
+    branches:
+      - render-cf-evolution
 
 permissions:
   contents: read
@@ -15,8 +18,6 @@ jobs:
   render:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      COMPOSITION: ${{ inputs.composition }}
 
     steps:
       - name: Checkout
@@ -36,13 +37,23 @@ jobs:
 
       - name: Render MP4
         run: |
-          mkdir -p out
-          npx remotion render "$COMPOSITION" out/render.mp4
+          mkdir -p out/stills
+          npx remotion render src/cyberfish-index.tsx CyberFishEvolution out/render.mp4 --codec=h264 --crf=17
 
-      - name: Upload render
+      - name: Render QC stills
+        run: |
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/00.png --frame=0
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/05.png --frame=150
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/10.png --frame=300
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/14.png --frame=420
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/18.png --frame=540
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/22.png --frame=660
+          npx remotion still src/cyberfish-index.tsx CyberFishEvolution out/stills/27.png --frame=810
+
+      - name: Upload render and QC
         uses: actions/upload-artifact@v4
         with:
-          name: remotion-${{ inputs.composition }}-${{ github.run_id }}
-          path: out/render.mp4
+          name: cyberfish-evolution-${{ github.run_id }}
+          path: out/
           if-no-files-found: error
           retention-days: 7
