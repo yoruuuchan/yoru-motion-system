@@ -1,0 +1,48 @@
+name: Render Remotion
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: Remotion composition ID
+        required: true
+        default: BentoGrid
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      COMPOSITION: ${{ inputs.composition }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Render MP4
+        run: |
+          mkdir -p out
+          npx remotion render "$COMPOSITION" out/render.mp4
+
+      - name: Upload render
+        uses: actions/upload-artifact@v4
+        with:
+          name: remotion-${{ inputs.composition }}-${{ github.run_id }}
+          path: out/render.mp4
+          if-no-files-found: error
+          retention-days: 7
