@@ -20,18 +20,18 @@ const FullImage: React.FC<{
   filter?: string;
 }> = ({src, opacity = 1, scale = 1, x = 0, y = 0, origin = '50% 50%', filter}) => (
   <AbsoluteFill style={{overflow: 'hidden', opacity}}>
-    <Img
-      src={src}
+    <div
       style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
+        position: 'absolute',
+        inset: 0,
         transformOrigin: origin,
         scale,
         translate: `${x}px ${y}px`,
         filter,
       }}
-    />
+    >
+      <Img src={src} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+    </div>
   </AbsoluteFill>
 );
 
@@ -58,18 +58,18 @@ const SwarmBands: React.FC<{frame: number; opacity: number}> = ({frame, opacity}
               translate: `${drift}px ${lift}px`,
             }}
           >
-            <Img
-              src={SWARM}
+            <div
               style={{
                 position: 'absolute',
                 left: '-1%',
                 top: `${-i * 100}%`,
                 width: '102%',
                 height: `${bands * 100}%`,
-                objectFit: 'cover',
                 filter: i % 2 === 0 ? 'brightness(1.02)' : 'brightness(0.94)',
               }}
-            />
+            >
+              <Img src={SWARM} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
           </div>
         );
       })}
@@ -102,17 +102,17 @@ const TrioPanels: React.FC<{frame: number; opacity: number}> = ({frame, opacity}
               scale: 0.985 + p * 0.015,
             }}
           >
-            <Img
-              src={TRIO}
+            <div
               style={{
                 position: 'absolute',
                 left: `${-i * 100}%`,
                 top: 0,
                 width: `${columns * 100}%`,
                 height: '100%',
-                objectFit: 'cover',
               }}
-            />
+            >
+              <Img src={TRIO} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
           </div>
         );
       })}
