@@ -119,10 +119,9 @@ anywhere in the source), and the Chinese typography settings.
 
 ## Licensing
 
-- Code here is written for this repository. No upstream implementation was copied.
-- Fonts in `public/fonts/` are SIL OFL 1.1 (Inter, JetBrains Mono, Source Han Sans SC),
-  taken from the YORU Content Design System. Their licence files ship alongside them.
-- Remotion is a dependency with its own license and eligibility terms; check the upstream license before commercial deployment.
+Original code and documentation are released under the [MIT License](LICENSE).
+Third-party components keep their own terms; see [NOTICES.md](NOTICES.md) for Remotion,
+bundled fonts, provenance, and other licensing notes.
 
 ## Versions
 
